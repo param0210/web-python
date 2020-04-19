@@ -32,3 +32,7 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+    
+    
+    def snnippet(self):
+        return self.description[:60]+"...."
