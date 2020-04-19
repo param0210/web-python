@@ -4,7 +4,8 @@ from django.conf.urls.i18n import urlpatterns
 
 urlpatterns=[
     url(r'^about us$',views.about),
-    url(r'^$',views.homepage)
+    url(r'^$',views.homepage),
+    url(r'blog-list',views.blog_list)
     
     
     ]

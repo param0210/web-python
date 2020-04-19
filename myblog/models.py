@@ -26,6 +26,7 @@ class Blog(models.Model):
     description=models.TextField()
     slug=models.SlugField()
     created_on=models.DateTimeField(auto_now_add=True)
+    created_time=models.TimeField()
 #     writer=
 #    s thumbnail=
 
