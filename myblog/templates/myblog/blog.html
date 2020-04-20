@@ -1,12 +1,16 @@
 {%extends 'base.html' %}
 {% block content%}
-	<h1>blogs List:</h1>
-	<div class="blogs">
-		{% for blog in all_blog %}
-		<h1>{{ blog.title }}</h1>
+<h1>blogs List:</h1>
+<div class="blogs">
+	<ol type="I">
+	{% for blog in all_blog %}
+		<li>
+		<h1><a href="{% url 'myblogs:details' slug=blog.slug %}">{{blog.title }}</a></h1>
+		</li>
 		<p>{{blog.created_on}}</p>
-		<p>{{blog.snnippet}}</p>
-		{% endfor %}
-	</div>
-	{% endblock %}
+			<p>{{blog.snnippet}}</p>
+	{% endfor %}
+		</ol>
 
+</div>
+{% endblock %}

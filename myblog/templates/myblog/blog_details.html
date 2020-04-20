@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="blog_details">
+	<img src="{{blogs.thumbnail.url}}"/>
+	<h1>{{blogs.title}}</h1>
+	<p>{{blogs.description}}</p>
+	<p>{{blogs.created_on}}</p>
+
+</div>
+{% endblock %}

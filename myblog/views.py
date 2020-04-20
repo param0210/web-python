@@ -17,4 +17,10 @@ def homepage(request):
 def blog_list(request):
     blog=Blog.objects.all().order_by('-created_on')
     return render(request,'myblog/blog.html',{'all_blog':blog})
+
+def blog_details(request,slug):
+    print(slug)
+    blog=Blog.objects.get(slug=slug)
+    return render(request,'myblog/blog_details.html',{'blogs':blog})
+    #return HttpResponse(slug)
     
