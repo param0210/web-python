@@ -6,8 +6,8 @@ app_name='myblogs'
  
 urlpatterns=[
     url(r'^about-us$',views.about,name='aboutus'),
-    url(r'^$',views.homepage,name='homepage'),
-    url(r'blogs',views.blog_list,name='blog'),
+    url(r'^homepage$',views.homepage,name='homepage'),
+    url(r'blog_list',views.blog_list,name='blog'),
     url(r'^(?P<slug>[\w-]+)/$',views.blog_details,name='details')
     
     

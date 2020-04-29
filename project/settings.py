@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myblog',
+    'accounts'
+    
 
 ]
+
+AUTH_USER_MODEL='myblog.MyUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,7 +83,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'web-python',
+        'NAME': 'blogapp',
         'USER':'postgres',
         'PASSWORD':'25122512',
         'HOST':'localhost'
@@ -118,6 +122,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+# TIME_ZONE = 'America/New_York'
 
 
 # Static files (CSS, JavaScript, Images)
