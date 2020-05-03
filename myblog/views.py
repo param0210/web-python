@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from aiohttp.client import request
 from .models import * 
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -23,4 +25,8 @@ def blog_details(request,slug):
     blog=Blog.objects.get(slug=slug)
     return render(request,'myblog/blog_details.html',{'blogs':blog})
     #return HttpResponse(slug)
+    
+@login_required(login_url='/accounts/login/') 
+def blog_create(request):
+    return render(request,'myblog/blog_create.html')
     

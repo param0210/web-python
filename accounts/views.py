@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import AuthenticationForm
 from.forms import *
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login,logout
 # Create your views here.
 @csrf_exempt   
 def signup(request):
@@ -25,6 +25,7 @@ def login(request):
         form=AuthenticationForm(data=request.POST)
         if form.is_valid():
             user=form.get_user()
+            print(user)
             auth_login(request,user)
             return redirect('myblogs:blog')
         else:
@@ -35,5 +36,8 @@ def login(request):
         return render(request,'accounts/login.html',{'form':form})
     
 
-        
-           
+@csrf_exempt     
+def logout_view(request): 
+    if request.method=='POST':
+        logout(request)
+        return redirect('accounts:login')       

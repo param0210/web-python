@@ -12,6 +12,20 @@
 </head>
 
 <body>
+	<div class="logout">
+<header class="wrapper">
+	<nav>
+		<ul>
+			<li>
+				<form class="logout-link" action="{% url 'accounts:logout' %}" method="POST">
+					<button type="submit">LogOut</button>
+				</form>
+			</li>
+		</ul>
+	</nav>
+	</header>
+</div>
+
 	<div class="wrapper">
 		{% block content%}
 		{% endblock %}

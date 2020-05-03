@@ -8,7 +8,10 @@ urlpatterns=[
     url(r'^about-us$',views.about,name='aboutus'),
     url(r'^homepage$',views.homepage,name='homepage'),
     url(r'blog_list',views.blog_list,name='blog'),
-    url(r'^(?P<slug>[\w-]+)/$',views.blog_details,name='details')
+    url(r'^create/$',views.blog_create,name='create'),
+
+    url(r'^(?P<slug>[\w-]+)/$',views.blog_details,name='details'),
+
     
     
     ]
