@@ -27,7 +27,7 @@ class Blog(models.Model):
     slug=models.SlugField()
     created_on=models.DateTimeField(auto_now_add=True)
     created_time=models.TimeField()
-#     writer=
+    writen_by=models.ForeignKey(MyUser,on_delete=models.CASCADE,null=True)
     thumbnail=models.ImageField(default='default.png',blank=True)
     
     class Meta:

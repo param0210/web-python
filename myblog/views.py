@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from aiohttp.client import request
 from .models import * 
 from django.contrib.auth.decorators import login_required
-
+from.forms import *
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -27,6 +28,18 @@ def blog_details(request,slug):
     #return HttpResponse(slug)
     
 @login_required(login_url='/accounts/login/') 
+@csrf_exempt
 def blog_create(request):
-    return render(request,'myblog/blog_create.html')
+    if request.method=='POST':
+      form=CreateBlog(request.POST,request.FILES)
+      if form.is_valid():
+          instance=form.save(commit=False)
+          instance.writen_by=request.user
+          instance.save()
+          return redirect('myblogs:blog')
+
+          
+    else:
+        form=CreateBlog()
+        return render(request,'myblog/blog_create.html',{'form':form})
     

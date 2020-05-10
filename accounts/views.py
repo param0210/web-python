@@ -27,7 +27,11 @@ def login(request):
             user=form.get_user()
             print(user)
             auth_login(request,user)
-            return redirect('myblogs:blog')
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('myblogs:blog')
+            
         else:
             return render(request,'accounts/login.html',{'form':form})
 
