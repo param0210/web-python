@@ -36,10 +36,13 @@ def blog_create(request):
           instance=form.save(commit=False)
           instance.writen_by=request.user
           instance.save()
-          return redirect('myblogs:blog')
+          return redirect('myblogs:myblogs')
 
           
     else:
         form=CreateBlog()
         return render(request,'myblog/blog_create.html',{'form':form})
     
+def user_blogs(request):
+    blogs=Blog.objects.filter(writen_by=request.user)
+    return render(request,'myblog/user_blogs.html',{'blog':blogs})
