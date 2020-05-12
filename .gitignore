@@ -1,0 +1,9 @@
+myblog/migrations
+accounts/migrations
+project/__pycache__/
+accounts/__pycache__/
+accounts/__init__.py
+.project
+.pydevproject
+myblog/__pycache__/
+
