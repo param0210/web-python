@@ -11,7 +11,5 @@ urlpatterns=[
     url(r'^create/$',views.blog_create,name='create'),
     url(r'^myblogs$',views.user_blogs,name='myblogs'),
     url(r'^(?P<slug>[\w-]+)/$',views.blog_details,name='details'),
-
-    
     
     ]

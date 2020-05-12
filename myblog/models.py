@@ -6,9 +6,8 @@ GENDER=(
     ('MALE','male'),
     ('FEMALE','female'),
     ('TRANSGENDER','transgender')
-     
-     
     )
+
 class MyUser(AbstractUser):
     first_name=models.CharField(max_length=100,null=False,blank=False)
     last_name=models.CharField(max_length=100,null=True,blank=True)
@@ -18,8 +17,6 @@ class MyUser(AbstractUser):
      
     class Meta:
         verbose_name_plural='Users'
-
-
 
 class Blog(models.Model):
     title=models.CharField(max_length=100,blank=True)
@@ -36,7 +33,6 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
-    
     
     def snnippet(self):
         return self.description[:60]+"...."

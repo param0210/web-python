@@ -12,9 +12,7 @@ def signup(request):
            form.save()
            return redirect('accounts:login')
        else:
-            return render(request,'accounts/signup.html')
-
-           
+            return render(request,'accounts/signup.html')      
     else:
         form=SignUpForm()
         return render(request,'accounts/signup.html',{'form':form})
@@ -31,7 +29,7 @@ def login(request):
                 return redirect(request.POST.get('next'))
             else:
                 return redirect('myblogs:blog')
-            
+  
         else:
             return render(request,'accounts/login.html',{'form':form})
 

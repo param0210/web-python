@@ -14,18 +14,16 @@ def about(request):
 
 
 def homepage(request):
-#     return HttpResponse("welcome to homepage")
       return render(request,'myblog/home.html')
   
 def blog_list(request):
+    
     blog=Blog.objects.all().order_by('-created_on')
     return render(request,'myblog/blog.html',{'all_blog':blog})
 
 def blog_details(request,slug):
-    print(slug)
     blog=Blog.objects.get(slug=slug)
     return render(request,'myblog/blog_details.html',{'blogs':blog})
-    #return HttpResponse(slug)
     
 @login_required(login_url='/accounts/login/') 
 @csrf_exempt
@@ -36,9 +34,7 @@ def blog_create(request):
           instance=form.save(commit=False)
           instance.writen_by=request.user
           instance.save()
-          return redirect('myblogs:myblogs')
-
-          
+          return redirect('myblogs:myblogs')     
     else:
         form=CreateBlog()
         return render(request,'myblog/blog_create.html',{'form':form})
