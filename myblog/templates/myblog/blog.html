@@ -1,11 +1,11 @@
 {%extends 'base.html' %}
 {% block content%}
-<h1>blogs List:</h1>
+<h1 class="blog-list">blogs List</h1>
 <div class="blogs">
 	<ol type="I">
 	{% for blog in all_blog %}
 		<li>
-		<h1><a href="{% url 'myblogs:details' slug=blog.slug %}">{{blog.title }}</a></h1>
+		<h2><a href="{% url 'myblogs:details' slug=blog.slug %}">{{blog.title }}</a></h2>
 		</li>
 		<p>{{blog.created_on}}</p>
 			<p>{{blog.snnippet}}</p>

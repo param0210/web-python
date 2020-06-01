@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,8 +15,8 @@
 <body>
 	<div class="logout">
 <header class="wrapper">
-<h1><a href="{url 'myblogs:homepage'}"><img src="{% static 'logo.jpg' %}" alt="BLOG"/></a></h1>
-	<nav>
+<h1><a href="{% url 'myblogs:homepage' %}"><img id="image-logo" src="{% static 'logo.jpg' %}"  alt="BLOG"/></a></h1>
+	<nav class="navbar">
 		<ul>
 		{% if user.is_authenticated %}
 			<li>
