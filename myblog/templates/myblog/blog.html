@@ -1,6 +1,6 @@
 {%extends 'base.html' %}
 {% block content%}
-<h1 class="blog-list">blogs List</h1>
+<h1 class="blog-list">Welcome To The World Of Blogs</h1>
 <div class="blogs">
 	<ol type="I">
 	{% for blog in all_blog %}
@@ -10,6 +10,7 @@
 		<p>{{blog.created_on}}</p>
 			<p>{{blog.snnippet}}</p>
 			<p>{{blog.writen_by}}</p>
+			<hr>
 	{% endfor %}
 		</ol>
 </div>
