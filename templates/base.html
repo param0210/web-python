@@ -3,41 +3,43 @@
 <html lang="en">
 
 <head>
-	
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Blogs List</title>
-	<link rel="stylesheet" href="{% static 'style.css'%}">
-	<!--<link rel="stylesheet" href="/static/style.css">-->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blogs List</title>
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <!--<link rel="stylesheet" href="/static/style.css">-->
 </head>
 
 <body>
-	<div class="logout">
-<header class="wrapper">
-<h1><a href="{% url 'myblogs:homepage' %}"><img id="image-logo" src="{% static 'logo.jpg' %}"  alt="BLOG"/></a></h1>
-	<nav class="navbar">
-		<ul>
-		{% if user.is_authenticated %}
-			<li>
-				<form class="logout-link" action="{% url 'accounts:logout' %}" method="POST">
-					<button type="submit">LogOut</button>
-				</form>
-			</li>
-			{% else %}
-		     <li> <a href="{% url 'accounts:login'%}">Login</a></li>
-		      <li><a href="{% url 'accounts:sign-up'%}">SignUp</a></li>
-		      {% endif %}
-		</ul>
-	</nav>
-	</header>
-</div>
+    <div class="logout">
+        <header class="wrapper">
+            <h1>
+                <a href="{% url 'myblogs:homepage' %}"><img id="image-logo" src="{% static '.blog.png' %}" alt="BLOG" /></a>
+            </h1>
+            <nav class="navbar">
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <!-- when we will click on logout button a post reauest will be sumbitted which cause to user logging out-->
+                        <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST">
+                            <button type="submit">LogOut</button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li> <a href="{% url 'accounts:login'%}">Login</a></li>
+                    <li><a href="{% url 'accounts:sign-up'%}">SignUp</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+    </div>
 
-	<div class="wrapper">
-		{% block content%}
-		{% endblock %}
+    <div class="wrapper">
+        {% block content%} {% endblock %}
 
-	</div>
+    </div>
 </body>
 
 </html>
