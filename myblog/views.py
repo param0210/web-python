@@ -25,7 +25,7 @@ def blog_details(request,slug):
     blog=Blog.objects.get(slug=slug)
     return render(request,'myblog/blog_details.html',{'blogs':blog})
     
-@login_required(login_url='/accounts/login/') 
+@login_required(login_url='/accounts/login/') #tell the django what is login url
 @csrf_exempt
 def blog_create(request):
     if request.method=='POST':

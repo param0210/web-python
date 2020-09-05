@@ -20,11 +20,12 @@ def signup(request):
 @csrf_exempt   
 def login(request):
     if request.method=='POST':
-        form=AuthenticationForm(data=request.POST)
+        form=AuthenticationForm(data=request.POST)#parameter data is holds the value of post data we passed in the login form 
         if form.is_valid():
-            user=form.get_user()
+            user=form.get_user()# getting user from form
             print(user)
             auth_login(request,user)
+            #if parameter 'next' exist in post request grab that next parameter and redirect to that particular 'next'parameter
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
