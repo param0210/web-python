@@ -3,13 +3,23 @@ from django.contrib.auth.forms import AuthenticationForm
 from.forms import *
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import login as auth_login,logout
+from myblog.models import  MyUser
 # Create your views here.
 @csrf_exempt   
 def signup(request):
     if request.method=="POST":
        form=SignUpForm(request.POST)
        if form.is_valid():
-           form.save()
+           gender=form.cleaned_data['gender']
+           first_name=form.cleaned_data['first_name']
+           last_name=form.cleaned_data['last_name']
+           middle_name=form.cleaned_data['middle_name']
+           mobile_number=form.cleaned_data['mobile_number']
+           date_of_birth=form.cleaned_data['date_of_birth']
+           user=MyUser.objects.create(first_name=first_name,last_name=last_name,mobile_number=mobile_number,gender=gender,date_of_birth=date_of_birth)
+           
+             
+           #form.save()
            return redirect('accounts:login')
        else:
             return render(request,'accounts/signup.html')      

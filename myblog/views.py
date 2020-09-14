@@ -5,6 +5,7 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from.forms import *
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import View
 
 # Create your views here.
 
@@ -38,6 +39,27 @@ def blog_create(request):
     else:
         form=CreateBlog()
         return render(request,'myblog/blog_create.html',{'form':form})
+
+
+class BlogCreate(View):
+    form_class=CreateBlog
+    template='myblog/blog_create.html'
+
+    def get(self,request):
+        form=self.form_class()
+        return render(request,self.template,{'form':form})
+
+    def post(self,request):
+        form=self.form_class(request.POST)
+        if form.is_valid:
+            instance=form.save(commit=False)
+            instance.written_by=request.user
+            instance.save()
+            return redirect('myblogs:myblogs')
+        else:
+            return render(request,self.template,{'form':form})
+    
+
     
 def user_blogs(request):
     blogs=Blog.objects.filter(writen_by=request.user)
